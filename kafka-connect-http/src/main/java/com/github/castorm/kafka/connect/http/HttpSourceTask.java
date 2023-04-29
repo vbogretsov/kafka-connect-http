@@ -104,6 +104,8 @@ public class HttpSourceTask extends SourceTask {
 
         throttler.throttle(offset.getTimestamp().orElseGet(Instant::now));
 
+        log.info("Requesting offset {}", offset.toMap());
+
         HttpRequest request = requestFactory.createRequest(offset);
 
         HttpResponse response = execute(request);
